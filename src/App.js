@@ -8,9 +8,14 @@ function App() {
   const [letter, addLetter] = useState('');
   const [info, addInfo] = useState('');
 
+  // Metodo para consultar la api de letras de canciones
+  const consultLetterAPI = (search) => {
+    console.log(search);
+  }
+
   return (
     <Fragment>
-      <Form />
+      <Form consultLetterAPI={consultLetterAPI} />
     </Fragment>
   );
 }
