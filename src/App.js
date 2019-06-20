@@ -10,6 +10,11 @@ function App() {
   const [letter, addLetter] = useState([]);
   const [info, addInfo] = useState({});
 
+  useEffect(() => {
+    // console.log('agregaste un artista');
+    consultInfoAPI()
+  }, [artist])
+
   // Metodo para consultar la api de letras de canciones
   const consultLetterAPI = async(search) => {
     const { artist, song } = search;
@@ -18,7 +23,20 @@ function App() {
     // consultar la api
     const result = await axios(url);
 
+    // Almacenar el artista que se busco
+    addArtist(artist);
+
     addLetter(result.data.lyrics);
+
+  }
+
+  // Metodo para consultar la api de informacion
+  const consultInfoAPI = async() => {
+    const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
+
+    const result = await axios(url);
+
+    addInfo(result.data.artists[0]);
   }
 
   return (
