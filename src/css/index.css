@@ -26,12 +26,12 @@ legend {
 legend::before {
   position: absolute;
   content: '';
-  width: calc(80% );
+  width: calc(120% );
   display: block;
   background-color:#EB6864;
   height: 40px;
   z-index:-1;
-  left: 90px;
+  left: -30px;
   right: -30px;
   transform: rotate(-1deg);
   transition: transform .3s ease;
