@@ -1,4 +1,4 @@
-# Weather App
+# Buscador de Letras de Canciones
 ![Captura de Musica](.readme-static/capture.png)
 
 Aplicación desarrollada en ReactJS que utiliza las API **api.lyrics** para consultar letras, y la de **theaudiodb** para mostrar información relevante sobre los artistas seleccionados. Algunas de las features que tiene son:
