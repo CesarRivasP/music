@@ -21,14 +21,17 @@ function App() {
     const { artist, song } = search;
     const url = `https://api.lyrics.ovh/v1/${artist}/${song}`;
 
-    // consultar la api
-    const result = await axios(url);
-
-    // Almacenar el artista que se busco
-    addArtist(artist);
-
-    addLetter(result.data.lyrics);
-
+    let result;
+    try {
+      // consultar la api
+      result = await axios(url);
+      // Almacenar el artista que se busco
+      addArtist(artist);
+      addLetter(result.data.lyrics);
+    }
+    catch(error){
+      console.log(`Error al buscar la letra de la canción ${error}`);
+    }
   }
 
   // Metodo para consultar la api de informacion
