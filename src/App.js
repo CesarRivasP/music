@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import Form from './components/form';
 import Song from './components/song';
+import Information from './components/info';
 
 function App() {
 
@@ -32,11 +33,14 @@ function App() {
 
   // Metodo para consultar la api de informacion
   const consultInfoAPI = async() => {
-    const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
+    // Hasta que alla un artista. ESta api realiza una consulta por defecto
+    if(artist){
+      const url = `https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`;
 
-    const result = await axios(url);
+      const result = await axios(url);
 
-    addInfo(result.data.artists[0]);
+      addInfo(result.data.artists[0]);
+    }
   }
 
   return (
@@ -44,6 +48,9 @@ function App() {
       <Form consultLetterAPI={consultLetterAPI} />
       <div className="container mt-5">
         <div className="row">
+          <div className="col-md-6">
+            <Information info={info} />
+          </div>
           <div className="col-md-6">
             <Song letter={letter} />
           </div>
